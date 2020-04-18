@@ -13,6 +13,57 @@
 
 to run the test, just type `yarn test` or `npm run test` inside the mimoo directory to run JEST.
 
+## I organized the code like:
+
+### Redux folders
+    * ./src/actions
+        - the actions filenames was built to show the right actions based on it reducers, for example, the file user.js contains all the user's reducer actions.
+    * ./src/reducers
+        - the reducers filenames was build to show the right reducers based on it store, for example, the file user.js contains all the user's store manipulation.
+        - this file have an utils folder, because these utils files were only used on reducers folder.
+    * ./src/saga
+        - the saga filenames was build to show the right saga based on it actions/reducers, for example, the file user.js contains all the user's watchers.
+    * ./src/store
+        - the file createStore.js has all the configuration about saga, redux-persist, redux-api-middleware and redux-devtools-extension.
+
+### assets (static images)
+    * ./src/assets
+
+### the app core itself
+    * ./src/containers
+        - It has the app containers, rendered in the routes.js file, which has the react-router-dom configuration.
+    * ./src/components
+        - It Has the components that containers use.
+
+### util functions
+    * ./src/utils
+        - It has util functions used in the whole application.
+
+### about all these files, you can import default exports accessing the right folder, or import it just accessing the main folder, for example:
+    - import Home from './src/containers/Home';
+    - import { Home } from './src/containers';
+
+
+
+## I organized the tests like:
+    * ./tests/function-tests
+        - It has all the functions in the application, and it was built with the expected folder/file name, for example:
+            - ./reducers-utils/addNewProduct.test.js is the same as ./src/reducers/utils/addNewProduct.test.js.
+            - ./utils/deviceSizes.test.js is the same as ./src/utils/deviceSizes.js.
+    * ./tests/react-tests
+        - It has all the component tests, using jest snapshot test. It has:
+            - ./components.test.js has all the ./src/components components tested.
+            - ./containers.test.js has all the ./src/containers components tested.
+    * ./tests/redux-tests
+        - It has all the redux tests. It has:
+            - ./actions-user.test.js has all the ./src/actions/user.js actions tested.
+            - ./reducers-user.test.js has all the ./src/reducers/users.js switch cases tested.
+    * ./tests/mocks.js
+        - have all the mocks used on the tests, such as device sizes, products, new product, etc.
+    * ./tests/assetsTransformer.js
+        - have one configuration about static image files, to make it keep working with jest tests.
+
+
 ### The App was built to support different sizes, which can be:
     - > 200px
     - 200px > 360px
@@ -24,7 +75,7 @@ to run the test, just type `yarn test` or `npm run test` inside the mimoo direct
     - 1600px > 1920px
     - 1920px > 2560px
     - < 2560px
-You can see this properties accessing ./src/utils/deviceSizes.js
+You can see this properties accessing ./src/utils/deviceSizes.js.
 
 ## Techs used:
 
@@ -39,6 +90,7 @@ You can see this properties accessing ./src/utils/deviceSizes.js
     - Redux Api Middleware;
     - Local Storage;
     - Redux Devtools Extension ( to see the redux on chrome browser ).
+> FYI because I'm using localStorage and, since the test's API doesn't have delete methods, you need to clear the cache if you need to see the app from the scratch after you use it, to do it you need to acces F12 > Application > Clear storage and click on Clear site data button
 
 ### Styling
     - Material-ui (core/icons);
