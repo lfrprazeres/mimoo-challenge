@@ -73,6 +73,7 @@ function Home(props) {
         if(user.products.length < 1) {
             getProducts();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const {

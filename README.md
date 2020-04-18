@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mimoo Test
 
-## Available Scripts
+## To execute the dev environment properly you need to: 
+```
+1. clone this repository
+2. enter in the mimoo directory
+3. run yarn or npm install
+4. run yarn start or npm start
+5. use one browser which has localStorage (not work on IE and EDGE without build)
+6. open your favourite browser and access http://localhost:3000 to see the magic!
+```
+> FYI I used Redux Devtools in the project, so if you want to see the redux store/redux actions more easily you can install [Redux Devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=pt-BR) extension on Chrome, and see accessing F12 > Redux, see how it works in the [github documentation](https://github.com/zalmoxisus/redux-devtools-extension)
 
-In the project directory, you can run:
+to run the test, just type `yarn test` or `npm run test` inside the mimoo directory to run JEST.
 
-### `yarn start`
+### The App was built to support different sizes, which can be:
+    - > 200px
+    - 200px > 360px
+    - 360px > 411px
+    - 411px > 768px
+    - 768px > 1024px
+    - 1024px > 1440px
+    - 1440px > 1600px
+    - 1600px > 1920px
+    - 1920px > 2560px
+    - < 2560px
+You can see this properties accessing ./src/utils/deviceSizes.js
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Techs used:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Main Libraries
+    - React;
+    - React Router.
 
-### `yarn test`
+### Storage
+    - Redux;
+    - Redux Saga;
+    - Redux Persist;
+    - Redux Api Middleware;
+    - Local Storage;
+    - Redux Devtools Extension ( to see the redux on chrome browser ).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Styling
+    - Material-ui (core/icons);
+    - Styled Components.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Test
+    - Jest;
+    - Enzyme.
