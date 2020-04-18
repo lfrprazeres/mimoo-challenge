@@ -46,12 +46,11 @@ export const searchingProducts = () => {
 }
 
 export const SEARCH_NEW_PRODUCT = `${standardStart}SEARCH_NEW_PRODUCT`;
-export const searchNewProduct = (barCode, history) => {
+export const searchNewProduct = barCode => {
     return {
         type: SEARCH_NEW_PRODUCT,
         payload: {
-            barCode,
-            history
+            barCode
         }
     }
 }

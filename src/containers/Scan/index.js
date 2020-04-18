@@ -28,12 +28,15 @@ const ScanStyled = styled.main`
         }
     }
     .image {
+        align-items: flex-end;
         background-image: url(${product});
         background-position-y: -270px;
         background-position-x: -260px;
         background-repeat: no-repeat;
         background-size: 250%;
+        display: flex;
         height: calc(100vh - 50px);
+        max-width: 100%;
         position: relative;
         width: 100vw;
         @media ${device.mobileM} {
@@ -89,18 +92,14 @@ const ScanStyled = styled.main`
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 4px;
             backdrop-filter: blur(10px);
-            bottom: 55px;
             color: white;
             display: flex;
             flex-direction: column;
             height: 118px;
+            margin-bottom: 120px;
             padding: 22px 36px 36px 36px;
-            position: absolute;
             width: 100%; 
             z-index: 2;
-            @media ${device.laptop} {
-                bottom: 90px;
-            }
             span {
                 &:first-child {
                     font-size: 15.5px;
@@ -110,14 +109,7 @@ const ScanStyled = styled.main`
                     margin-top: 4px;
                 }
             }
-        }
-    }
-    > div {
-        &:last-child {
-            @media ${device.laptopL} {
-                bottom: -30px;
-            }
-        }
+        };
     }
 `;
 
@@ -160,7 +152,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         onSearch: async (barCode, history) => {
-            await dispatch(searchNewProduct(barCode, history))
+            await dispatch(searchNewProduct(barCode))
             history.push("/confirmacao");
         }
     }

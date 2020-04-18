@@ -9,6 +9,7 @@ import { Button } from '../../components';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { login } from '../../actions/user';
+import { device } from '../../utils/deviceSizes';
 
 const theme = createMuiTheme({
     overrides: {
@@ -50,7 +51,7 @@ const NomeStyled = styled.main`
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    margin: 14px 0 0 24px;
+    margin: 14px 0 80px 24px;
     .arrowIcon {
         color: ${props => props.green};
         font-weight: bold;

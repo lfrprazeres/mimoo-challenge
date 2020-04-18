@@ -7,7 +7,7 @@ import { device } from '../../utils/deviceSizes';
 import { Button } from "../../components";
 
 const SplashScreenStyled = styled.main`
-    background-attachment: fixed;
+    background-attachment: initial;
     background-image: url(${background});
     background-position-y: bottom;
     background-repeat: no-repeat;

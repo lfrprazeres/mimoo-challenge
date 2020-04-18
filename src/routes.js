@@ -21,6 +21,7 @@ function Routes(props) {
                 <Route path="/home" component={Home} />
                 <Route path="/scan" component={Scan} />
                 <Route path="/confirmacao" component={Confirmacao} />
+                {props.children}
             </Switch>
         </Router>
     )

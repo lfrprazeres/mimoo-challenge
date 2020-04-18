@@ -5,6 +5,7 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import { backgroundChooser } from './utils/backgroundChooser';
 
 const ProductsStyled = styled.div`
+    margin-bottom: 20px;
     ul {
         display: flex;
         margin-top: 10px;
@@ -13,6 +14,7 @@ const ProductsStyled = styled.div`
             cursor: pointer;
             font-size: 18px;
             font-weight: 500;
+            list-style-type: none;
             margin-right: 14px;
         }
         .selected {
@@ -40,6 +42,7 @@ const ProductsStyled = styled.div`
         .products {
             display: flex;
             flex-wrap: wrap;
+            max-width: 100%;
             width: 87vw;
             .product {
                 align-items: flex-end;

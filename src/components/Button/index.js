@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button as MuiButton } from '@material-ui/core';
 import { device } from '../../utils/deviceSizes';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { connect  } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const ButtonStyled = styled.div`
     background-color: ${props => props.bg};
@@ -19,31 +19,45 @@ const ButtonStyled = styled.div`
         transform: translate(-50%, -50%);
         width: 300px;
     }
-    button {
-        color: ${props => props.color};
-        font-size: 17px;
-        font-weight: bold;
+    a {
         height: inherit;
-        text-transform: capitalize;
+        text-decoration: none;
         width: inherit;
-    };
+        button {
+            color: ${props => props.color};
+            font-size: 17px;
+            font-weight: bold;
+            height: inherit;
+            text-transform: capitalize;
+            width: inherit;
+        };
+    }
 `
 
 function Button(props) {
-    const history = useHistory();
+    const {
+        onClick,
+        colors,
+        bg,
+        color,
+        style,
+        to = "",
+        label
+    } = props
 
     function handleClick() {
-        if(props.onClick) {
-            props.onClick()
+        if(onClick) {
+            onClick()
         }
-        history.push(props.to)
     }
 
     return (
-        <ButtonStyled green={props.colors.green} bg={props.bg} color={props.color}>
-            <MuiButton onClick={() => handleClick()}>
-                {props.label}
-            </MuiButton>
+        <ButtonStyled green={colors.green} bg={bg} color={color} style={style}>
+            <Link to={to}>
+                <MuiButton onClick={() => handleClick()}>
+                    {label}
+                </MuiButton>
+            </Link>
         </ButtonStyled>
     )
 };

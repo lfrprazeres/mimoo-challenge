@@ -1,0 +1,27 @@
+---
+name: Confirmacao
+route: /confirmacao
+---
+
+import { Playground, Props } from 'docz';
+import Confirmacao from './';
+import { Provider } from 'react-redux';
+import Routes from '../../routes';
+import { store } from '../../store/createStore';
+
+# Confirmacao
+
+<Props of={Confirmacao} />
+
+## Basic usage
+<Playground>
+  <Provider store={store}>
+    <Routes>
+        <Confirmacao mockData={{
+          "name": "Jeunesse SPA",
+          "image": "https://mimoo-frontend-challenge-resources.s3.us-east-1.amazonaws.com/Jeunesse-Full.png",
+          "brand": "Jeunesse"
+        }}/>
+    </Routes>
+  </Provider>
+</Playground>

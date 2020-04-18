@@ -32,6 +32,8 @@ to run the test, just type `yarn test` or `npm run test` inside the mimoo direct
 ### the app core itself
     * ./src/containers
         - It has the app containers, rendered in the routes.js file, which has the react-router-dom configuration.
+        - The name of the containers is based on the Adobe XD photo names, to be easier to found the right code to the right screen.
+        - Since the scan part need to have an native camera to use, I prefered to just mock the functionality and focus in the storage part, but if you need it please tell me and I implement it for you.
     * ./src/components
         - It Has the components that containers use.
 
