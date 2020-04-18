@@ -18,15 +18,13 @@ describe('Fire user actions', () => {
 
     it('Should search a new product', () => {
         const barCode = "000";
-        const history = "";
         const expectedResponse = {
             type: actions.SEARCH_NEW_PRODUCT,
             payload: {
-                barCode,
-                history
+                barCode
             }
         };
-        expect(actions.searchNewProduct(barCode, history)).toStrictEqual(expectedResponse);
+        expect(actions.searchNewProduct(barCode)).toStrictEqual(expectedResponse);
     });
 
     it('Should save the new product', () => {

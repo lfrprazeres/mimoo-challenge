@@ -46,6 +46,8 @@ const config = {
         o: null,
         open: null,
         'open-browser': null,
+        port: 7000,
+        p: 7000,
         root: 'D:\\www\\projects\\mimoo\\.docz',
         base: '/',
         source: './',
@@ -61,8 +63,6 @@ const config = {
         title: 'Mimoo',
         description: 'My awesome app using docz',
         host: 'localhost',
-        port: 3000,
-        p: 3000,
         separator: '-',
         paths: {
           root: 'D:\\www\\projects\\mimoo',

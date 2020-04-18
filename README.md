@@ -13,6 +13,9 @@
 
 to run the test, just type `yarn test` or `npm run test` inside the mimoo directory to run JEST.
 
+## You can access this documentation and some more informations using docz:
+to use docz, type `yarn docz:dev` and access http://localhost:7000 to see the documentation!
+
 ## I organized the code like:
 
 ### Redux folders

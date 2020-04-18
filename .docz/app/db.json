@@ -34,6 +34,11 @@
             "value": "To execute the dev environment properly you need to:"
           },
           {
+            "slug": "you-can-access-this-documentation-and-some-more-informations-using-docz",
+            "depth": 2,
+            "value": "You can access this documentation and some more informations using docz:"
+          },
+          {
             "slug": "i-organized-the-code-like",
             "depth": 2,
             "value": "I organized the code like:"
@@ -206,32 +211,6 @@
       }
     },
     {
-      "key": "src/containers/Nome/Nome.mdx",
-      "value": {
-        "name": "Nome",
-        "route": "/nome",
-        "id": "71b5c1a113024feff097026ce61ec942",
-        "filepath": "src/containers/Nome/Nome.mdx",
-        "fullpath": "D:\\www\\projects\\mimoo\\src\\containers\\Nome\\Nome.mdx",
-        "link": "",
-        "hidden": false,
-        "slug": "src-containers-nome-nome",
-        "menu": "",
-        "headings": [
-          {
-            "slug": "nome",
-            "depth": 1,
-            "value": "Nome"
-          },
-          {
-            "slug": "basic-usage",
-            "depth": 2,
-            "value": "Basic usage"
-          }
-        ]
-      }
-    },
-    {
       "key": "src/containers/Scan/Scan.mdx",
       "value": {
         "name": "Scan",
@@ -248,6 +227,32 @@
             "slug": "scan",
             "depth": 1,
             "value": "Scan"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/containers/Nome/Nome.mdx",
+      "value": {
+        "name": "Nome",
+        "route": "/nome",
+        "id": "71b5c1a113024feff097026ce61ec942",
+        "filepath": "src/containers/Nome/Nome.mdx",
+        "fullpath": "D:\\www\\projects\\mimoo\\src\\containers\\Nome\\Nome.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-containers-nome-nome",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "nome",
+            "depth": 1,
+            "value": "Nome"
           },
           {
             "slug": "basic-usage",
