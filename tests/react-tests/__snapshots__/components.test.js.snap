@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components tests should render Button without crash with the properly props 1`] = `ShallowWrapper {}`;
+
+exports[`Components tests should render Products without crash with the properly props 1`] = `ShallowWrapper {}`;

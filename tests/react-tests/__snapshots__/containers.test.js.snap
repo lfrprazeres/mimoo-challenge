@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container tests should render Confirmacao without crash with the properly props 1`] = `ShallowWrapper {}`;
+
+exports[`Container tests should render Home without crash with the properly props 1`] = `ShallowWrapper {}`;
+
+exports[`Container tests should render Nome without crash with the properly props 1`] = `ShallowWrapper {}`;
+
+exports[`Container tests should render Scan without crash with the properly props 1`] = `ShallowWrapper {}`;
+
+exports[`Container tests should render SplashScreen without crash with the properly props 1`] = `ShallowWrapper {}`;
