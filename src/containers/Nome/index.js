@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -10,7 +10,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { login } from '../../actions/user';
 import * as utilAnimation from '../../utils/animations/viewSlide';
-import { device } from '../../utils/deviceSizes';
 
 const theme = createMuiTheme({
     overrides: {
@@ -81,6 +80,7 @@ const NomeStyled = styled.main`
 
 function Nome(props) {
     const [name, setName] = useState("");
+    const [error, setError] = useState({});
     const {
         colors,
         addName,
@@ -89,6 +89,23 @@ function Nome(props) {
         animation = {}
     } = props.location;
     const history = useHistory();
+    function handleCheckName() {
+        if(name.trim() !== "") {
+            history.push({
+                pathname: "/home",
+                animation: {
+                    enter: utilAnimation.slideInRight,
+                    exit: utilAnimation.slideOutRight
+                }
+            })
+            addName(name)
+        } else {
+            setError({
+                showError: true,
+                message: "Digite um nome válido"
+            })
+        }
+    }
     return (
         <NomeStyled green={colors.green} black={colors.black} enter={animation.enter} exit={animation.exit}>
             <div className="content">
@@ -97,13 +114,13 @@ function Nome(props) {
                 </IconButton>
                 <h1> Informe seu nome </h1>
                 <ThemeProvider theme={theme}>
-                    <TextField label="Nome" value={name} onChange={(e) => setName(e.target.value)}/>
+                    <TextField label={error.showError ? error.message: "Nome"} value={name} onChange={(e) => setName(e.target.value)} onClick={() => setError({})} error={error.showError}/>
                 </ThemeProvider>
             </div>
             <Button
-                to="/home"
                 label="Continuar"
-                onClick={() => addName(name)} bg={colors.green}
+                onClick={() => handleCheckName()}
+                bg={colors.green}
                 color="white"
                 animation={{
                     enter: utilAnimation.slideInRight,

@@ -4,37 +4,8 @@ import { Button as MuiButton } from '@material-ui/core';
 import { device } from '../../utils/deviceSizes';
 import { connect  } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as animaton from '../../utils/animations/viewSlide';
 
-const ButtonStyled = styled.div`
-    background-color: ${props => props.bg};
-    border-radius: 0;
-    height: 50px;
-    @media ${device.mobileS} {
-        bottom: 0;
-        position: absolute;
-        width: 100vw;
-    };
-    @media ${device.laptop} {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;
-    }
-    a {
-        height: inherit;
-        text-decoration: none;
-        width: inherit;
-        button {
-            color: ${props => props.color};
-            font-size: 17px;
-            font-weight: bold;
-            height: inherit;
-            text-transform: capitalize;
-            width: inherit;
-        };
-    }
-`
-
+let ButtonStyled;
 function Button(props) {
     const {
         onClick,
@@ -46,6 +17,59 @@ function Button(props) {
         label,
         animation
     } = props;
+    if(to) {
+        ButtonStyled = styled(Link)`
+            background-color: ${props => props.bg};
+            border-radius: 0;
+            cursor: pointer;
+            height: 50px;
+            text-decoration: none;
+            @media ${device.mobileS} {
+                bottom: 0;
+                position: absolute;
+                width: 100vw;
+            };
+            @media ${device.laptop} {
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 300px;
+            }
+            button {
+                color: ${props => props.color};
+                font-size: 17px;
+                font-weight: bold;
+                height: inherit;
+                text-transform: capitalize;
+                width: inherit;
+            };
+        `
+    } else {
+        ButtonStyled = styled.span`
+        background-color: ${props => props.bg};
+        border-radius: 0;
+        cursor: pointer;
+        height: 50px;
+        text-decoration: none;
+        @media ${device.mobileS} {
+            bottom: 0;
+            position: absolute;
+            width: 100vw;
+        };
+        @media ${device.laptop} {
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+        }
+        button {
+            color: ${props => props.color};
+            font-size: 17px;
+            font-weight: bold;
+            height: inherit;
+            text-transform: capitalize;
+            width: inherit;
+        };
+        `
+    }
 
     function handleClick() {
         if(onClick) {
@@ -54,15 +78,20 @@ function Button(props) {
     }
 
     return (
-        <ButtonStyled green={colors.green} bg={bg} color={color} style={style}>
-            <Link to={{
+        <ButtonStyled 
+            green={colors.green}
+            bg={bg}
+            color={color}
+            style={style}
+            to={{
                 pathname: to,
                 animation: animation
-            }} onClick={() => handleClick()}>
+            }}
+            onClick={() => handleClick()}
+        >
                 <MuiButton>
                     {label}
                 </MuiButton>
-            </Link>
         </ButtonStyled>
     )
 };

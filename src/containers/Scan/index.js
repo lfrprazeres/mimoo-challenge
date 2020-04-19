@@ -137,6 +137,11 @@ function Scan(props) {
         animation = {}
     } = props.location;
 
+    function handleSearch() {
+        onSearch(barCode, history);
+        history.push({ pathname: "/confirmacao", animation: { enter: utilAnimation.slideOutLeft, exit: utilAnimation.slideOutLeft }});
+    }
+
     return(
         <ScanStyled green={colors.green} black={colors.black} enter={animation.enter} exit={animation.exit}>
             <div className="title">
@@ -155,7 +160,7 @@ function Scan(props) {
                     </span>
                 </div>
             </div>
-            <Button label="Confirmar" bg="white" color={colors.green} onClick={() => onSearch(barCode, history)}/>
+            <Button label="Confirmar" bg="white" color={colors.green} onClick={() => handleSearch()}/>
         </ScanStyled>
     )
 }
@@ -168,7 +173,6 @@ const mapDispatchToProps = dispatch => {
     return {
         onSearch: async (barCode, history) => {
             await dispatch(searchNewProduct(barCode))
-            history.push({ pathname: "/confirmacao", animation: { enter: utilAnimation.slideOutLeft, exit: utilAnimation.slideOutLeft }});
         }
     }
 }

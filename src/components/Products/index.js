@@ -42,6 +42,12 @@ const ProductsStyled = styled.div`
             padding-right: 2px;
         }
     }
+    .slide-enter {
+        animation: ${props => props.selected.slideTo === "next" ? animation.slideInLeft : animation.slideInRight} 0.3s forwards;
+    }
+    .slide-exit {
+        animation: ${props => props.selected.slideTo === "next" ?  animation.slideOutLeft : animation.slideOutRight} 0.3s forwards;
+    }
     .brand {
         margin: 51px 0 -31px -5px;
         .brandTitle {
@@ -86,18 +92,21 @@ const ProductsStyled = styled.div`
 
 
 function Products(props) {
-    const [ selected, setSelected ] = useState(0);
+    const [ selected, setSelected ] = useState({
+        elementIndex: 0,
+        slideTo: "next"
+    });
     const [ domSelected, setDomSelected ] = useState();
     const {
         products,
         colors
     } = props;
     return (
-        <ProductsStyled gray={colors.gray} green={colors.green} domSelected={domSelected}>
+        <ProductsStyled gray={colors.gray} green={colors.green} domSelected={domSelected} selected={selected}>
             <ul>
                 {products.map((item, index) => {
                     return (
-                        <li key={index} onClick={(e) => {setSelected(index); setDomSelected(e.target)}} className={selected === index ? "selected" : ""}>
+                        <li key={index} onClick={(e) => {setSelected({elementIndex: index, slideTo: selected.elementIndex < index ? "next" : "previous"}); setDomSelected(e.target)}} className={selected === index ? "selected" : ""}>
                             {item.category}
                         </li>
                     )
@@ -105,30 +114,38 @@ function Products(props) {
             </ul>
             {products.length > 0 && 
                 <div>
-                    {products[selected].brands.slice(0).reverse().map((brand, index) => {
-                        return (
-                            <div className="brand" key={index}>
-                                <div className="brandTitle">
-                                    <RoomOutlinedIcon />
-                                    <span>
-                                        {brand.name}
-                                    </span>
-                                </div>
-                                <div className="products">
-                                    {brand.products.map((product,index) => {
-                                        let background = backgroundChooser(products[selected].category, colors.beige, colors.aquaBlue);
-                                        return (
-                                            <div key={index} className="product" style={{background: background}}>
-                                                <div className="productImage">
-                                                    <img src={product.image} alt={product.name}/>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        )
-                    })}
+                    <TransitionGroup className="brands" component={null}>
+                        {products[selected.elementIndex].brands.slice(0).reverse().map((brand, index) => {
+                            return (
+                                <CSSTransition
+                                    timeout={300}
+                                    classNames="slide"
+                                    key={brand.name}
+                                >
+                                    <div className="brand">
+                                        <div className="brandTitle">
+                                            <RoomOutlinedIcon />
+                                            <span>
+                                                {brand.name}
+                                            </span>
+                                        </div>
+                                        <div className="products">
+                                            {brand.products.map((product,index) => {
+                                                let background = backgroundChooser(products[selected.elementIndex].category, colors.beige, colors.aquaBlue);
+                                                return (
+                                                    <div key={index} className="product" style={{background: background}}>
+                                                        <div className="productImage">
+                                                            <img src={product.image} alt={product.name}/>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                </CSSTransition>
+                            )
+                        })}
+                    </TransitionGroup>
                 </div>
             }
         </ProductsStyled>
