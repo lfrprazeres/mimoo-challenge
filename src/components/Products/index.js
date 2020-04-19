@@ -13,9 +13,10 @@ const ProductsStyled = styled.div`
         position: relative;
         &:before {
             background-color: ${props => props.green};
+            border-radius: 4px;
             bottom: 0;
             content: "";
-            height: 2px;
+            height: 3px;
             left: ${props => props.domSelected === undefined ? "0" : props.domSelected.offsetLeft + "px"};
             position: absolute;
             transition: .2s ease;
@@ -31,6 +32,7 @@ const ProductsStyled = styled.div`
             margin-right: 14px;
             padding: 5px;
             text-align: center;
+            min-width: 100px;
         }
         .selected {
             color: ${props => props.green};
@@ -78,7 +80,8 @@ const ProductsStyled = styled.div`
         }
         
     }
-`
+`;
+
 
 function Products(props) {
     const [ selected, setSelected ] = useState(0);
