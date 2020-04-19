@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../../components';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { saveNewProduct } from '../../actions/user';
 import { device } from '../../utils/deviceSizes';
+import * as utilAnimation from '../../utils/animations/viewSlide';
+import { useHistory } from 'react-router-dom';
 
 const ConfirmacaoStyled = styled.main`
+    &.page-enter {
+        animation: ${props => props.enter} 0.2s forwards;
+    }
+    &.page-exit {
+        animation: ${props => props.exit} 0.2s forwards;
+    }
     align-items: center;
     background-color: ${props => props.lightBrown};
     display: flex;
@@ -69,14 +77,26 @@ const ConfirmacaoStyled = styled.main`
 `;
 
 function Confirmacao(props) {
+    const history = useHistory();
     const [ pointsEarned ] = useState(100);
     const {
         colors,
         product = {},
         onSave
     } = props;
+    const {
+        animation = {}
+    } = props.location;
+
+    useEffect(() => {
+        if(product.name === undefined) {
+            history.push("/scan")
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
-        <ConfirmacaoStyled lightBrown={colors.lightBrown} black={colors.black}>
+        <ConfirmacaoStyled lightBrown={colors.lightBrown} black={colors.black} enter={animation.enter} exit={animation.exit}>
             <div className="identifier">
                 <h4> Identificamos <br /> que você consome </h4>
                 <span> {product.name} </span>
@@ -92,7 +112,16 @@ function Confirmacao(props) {
                     Continue para ganhar ainda <br /> mais pontos
                 </span>
             </div>
-            <Button to="/home" label="Salvar" bg="white" color={colors.green} onClick={() => onSave(product, pointsEarned)} />
+            <Button
+                animation={{
+                    enter: utilAnimation.slideInLeft,
+                    exit: utilAnimation.slideOutLeft
+                }}
+                to="/home"
+                label="Salvar"
+                bg="white"
+                color={colors.green}
+                onClick={() => onSave(product, pointsEarned)} />
         </ConfirmacaoStyled>
     )
 }

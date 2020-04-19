@@ -107,32 +107,6 @@
       }
     },
     {
-      "key": "src/components/Button/button.mdx",
-      "value": {
-        "name": "Button",
-        "id": "c3a4162ba271ddbeabea462f799cd4e0",
-        "filepath": "src/components/Button/button.mdx",
-        "fullpath": "D:\\www\\projects\\mimoo\\src\\components\\Button\\button.mdx",
-        "link": "",
-        "hidden": false,
-        "slug": "src-components-button-button",
-        "route": "/src-components-button-button",
-        "menu": "",
-        "headings": [
-          {
-            "slug": "button",
-            "depth": 1,
-            "value": "Button"
-          },
-          {
-            "slug": "basic-usage",
-            "depth": 2,
-            "value": "Basic usage"
-          }
-        ]
-      }
-    },
-    {
       "key": "src/components/Products/products.mdx",
       "value": {
         "name": "Products",
@@ -149,6 +123,32 @@
             "slug": "products",
             "depth": 1,
             "value": "Products"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/components/Button/button.mdx",
+      "value": {
+        "name": "Button",
+        "id": "c3a4162ba271ddbeabea462f799cd4e0",
+        "filepath": "src/components/Button/button.mdx",
+        "fullpath": "D:\\www\\projects\\mimoo\\src\\components\\Button\\button.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-button-button",
+        "route": "/src-components-button-button",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "button",
+            "depth": 1,
+            "value": "Button"
           },
           {
             "slug": "basic-usage",
@@ -237,32 +237,6 @@
       }
     },
     {
-      "key": "src/containers/Scan/Scan.mdx",
-      "value": {
-        "name": "Scan",
-        "route": "/scan",
-        "id": "6563fa90d002764338c0d3c3ed7661f9",
-        "filepath": "src/containers/Scan/Scan.mdx",
-        "fullpath": "D:\\www\\projects\\mimoo\\src\\containers\\Scan\\Scan.mdx",
-        "link": "",
-        "hidden": false,
-        "slug": "src-containers-scan-scan",
-        "menu": "",
-        "headings": [
-          {
-            "slug": "scan",
-            "depth": 1,
-            "value": "Scan"
-          },
-          {
-            "slug": "basic-usage",
-            "depth": 2,
-            "value": "Basic usage"
-          }
-        ]
-      }
-    },
-    {
       "key": "src/containers/SplashScreen/SplashScreen.mdx",
       "value": {
         "name": "SplashScreen",
@@ -279,6 +253,32 @@
             "slug": "splashscreen",
             "depth": 1,
             "value": "SplashScreen"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/containers/Scan/Scan.mdx",
+      "value": {
+        "name": "Scan",
+        "route": "/scan",
+        "id": "6563fa90d002764338c0d3c3ed7661f9",
+        "filepath": "src/containers/Scan/Scan.mdx",
+        "fullpath": "D:\\www\\projects\\mimoo\\src\\containers\\Scan\\Scan.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-containers-scan-scan",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "scan",
+            "depth": 1,
+            "value": "Scan"
           },
           {
             "slug": "basic-usage",

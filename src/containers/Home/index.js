@@ -7,8 +7,15 @@ import { IconButton } from '@material-ui/core';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import { searchProduct } from '../../actions/user';
 import { useHistory } from 'react-router-dom';
+import * as utilAnimation from '../../utils/animations/viewSlide';
 
 const HomeStyled = styled.main`
+    &.page-enter {
+        animation: ${props => props.enter} 0.2s forwards;
+    }
+    &.page-exit {
+        animation: ${props => props.exit} 0.2s forwards;
+    }
     margin: 30px 0 0 36px;
     min-height: 100vh;
     h1 {
@@ -68,7 +75,8 @@ function Home(props) {
     const history = useHistory();
     useEffect(() => {
         const {
-            getProducts
+            getProducts,
+            user
         } = props;
         if(user.products.length < 1) {
             getProducts();
@@ -80,8 +88,11 @@ function Home(props) {
         user,
         colors
     } = props;
+    const {
+        animation = {}
+    } = props.location;
     return(
-        <HomeStyled black={colors.black} brown={colors.brown} green={colors.green}>
+        <HomeStyled black={colors.black} brown={colors.brown} green={colors.green} enter={animation.enter} exit={animation.exit}>
             <h1>Olá {user.name}!</h1>
             <h4>Adicione mais produtos à sua lista e ganhe pontos!</h4>
             <div className="points">
@@ -94,7 +105,7 @@ function Home(props) {
                 <span className="pointsValue"> {user.points} </span>
             </div>
             <Products/>
-            <IconButton className="addButton" onClick={() => history.push("/scan")}>
+            <IconButton className="addButton" onClick={() => history.push({ pathname:"/scan", animation: { enter: utilAnimation.slideInTop, exit: utilAnimation.slideOutTop }})}>
                 <AddRoundedIcon />
             </IconButton>
         </HomeStyled>

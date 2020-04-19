@@ -8,8 +8,15 @@ import product from '../../assets/images/Jeunesse.png';
 import { Button } from '../../components';
 import { searchNewProduct } from '../../actions/user';
 import { device } from '../../utils/deviceSizes';
+import * as utilAnimation from '../../utils/animations/viewSlide';
 
 const ScanStyled = styled.main`
+    &.page-enter {
+        animation: ${props => props.enter} 0.2s forwards;
+    }
+    &.page-exit {
+        animation: ${props => props.exit} 0.2s forwards;
+    }
     .title {
         height: 50px;
         margin: 6px 0 0 24px;
@@ -17,13 +24,13 @@ const ScanStyled = styled.main`
         svg {
             color: ${props => props.green};
             height: 35px;
-            margin-right: 29px;
             width: 35px;
         }
         > span {
             color: ${props => props.black};
             font-size: 20px;
             letter-spacing: .3px;
+            margin-left: 29px;
             opacity: 0.47;
         }
     }
@@ -111,6 +118,11 @@ const ScanStyled = styled.main`
             }
         };
     }
+    > div {
+        &:last-child {
+            bottom: 6px;
+        }
+    }
 `;
 
 function Scan(props) {
@@ -121,11 +133,14 @@ function Scan(props) {
         colors,
         onSearch
     } = props;
+    const {
+        animation = {}
+    } = props.location;
 
     return(
-        <ScanStyled green={colors.green} black={colors.black}>
+        <ScanStyled green={colors.green} black={colors.black} enter={animation.enter} exit={animation.exit}>
             <div className="title">
-                <IconButton aria-label="back" onClick={() => history.goBack()}>
+                <IconButton aria-label="back" onClick={() => history.push({ pathname: "/home", animation: { enter: utilAnimation.slideInBottom, exit: utilAnimation.slideOutBottom }})}>
                     <ArrowBackRoundedIcon className="arrowIcon"/>
                 </IconButton>
                 <span> Escanear Produto </span>
@@ -153,7 +168,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onSearch: async (barCode, history) => {
             await dispatch(searchNewProduct(barCode))
-            history.push("/confirmacao");
+            history.push({ pathname: "/confirmacao", animation: { enter: utilAnimation.slideOutLeft, exit: utilAnimation.slideOutLeft }});
         }
     }
 }

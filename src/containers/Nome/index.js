@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -9,6 +9,7 @@ import { Button } from '../../components';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { login } from '../../actions/user';
+import * as utilAnimation from '../../utils/animations/viewSlide';
 import { device } from '../../utils/deviceSizes';
 
 const theme = createMuiTheme({
@@ -47,11 +48,21 @@ const theme = createMuiTheme({
     }
 });
 
+
 const NomeStyled = styled.main`
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    margin: 14px 0 80px 24px;
+    &.page-enter {
+        animation: ${props => props.enter} 0.2s forwards;
+    }
+    &.page-exit {
+        animation: ${props => props.exit} 0.2s forwards;
+    }
+    .content {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: 14px 0 80px 24px;
+    }
     .arrowIcon {
         color: ${props => props.green};
         font-weight: bold;
@@ -66,19 +77,21 @@ const NomeStyled = styled.main`
         margin-top: 41px;
         margin-left: 12px;
     }
-
 `
 
 function Nome(props) {
     const [name, setName] = useState("");
     const {
         colors,
-        addName
+        addName,
     } = props;
+    const {
+        animation = {}
+    } = props.location;
     const history = useHistory();
     return (
-        <>
-            <NomeStyled green={colors.green} black={colors.black}>
+        <NomeStyled green={colors.green} black={colors.black} enter={animation.enter} exit={animation.exit}>
+            <div className="content">
                 <IconButton aria-label="back" onClick={() => history.goBack()}>
                     <ArrowBackIcon className="arrowIcon"/>
                 </IconButton>
@@ -86,9 +99,18 @@ function Nome(props) {
                 <ThemeProvider theme={theme}>
                     <TextField label="Nome" value={name} onChange={(e) => setName(e.target.value)}/>
                 </ThemeProvider>
-            </NomeStyled>
-            <Button to="/home" label="Continuar" onClick={() => addName(name)} bg={colors.green} color="white" />
-        </>
+            </div>
+            <Button
+                to="/home"
+                label="Continuar"
+                onClick={() => addName(name)} bg={colors.green}
+                color="white"
+                animation={{
+                    enter: utilAnimation.slideInRight,
+                    exit: utilAnimation.slideOutRight
+                }}
+            />
+        </NomeStyled>
     )
 }
 

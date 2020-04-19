@@ -5,8 +5,15 @@ import background from '../../assets/images/splash-screen-background.png';
 import { connect } from 'react-redux';
 import { device } from '../../utils/deviceSizes';
 import { Button } from "../../components";
+import * as animation from '../../utils/animations/viewSlide';
 
 const SplashScreenStyled = styled.main`
+    &.page-enter {
+        animation: ${animation.slideInLeft} 0.2s forwards;
+    }
+    &.page-exit {
+        animation: ${animation.slideOutLeft} 0.2s forwards;
+    }
     background-attachment: initial;
     background-image: url(${background});
     background-position-y: bottom;
@@ -73,7 +80,16 @@ function SplashScreen(props) {
                     </p>
                 </div>
             </div>
-            <Button to="/login" label="Começar" bg={colors.green} color={"white"} />
+            <Button 
+                animation={{
+                    enter: animation.slideInRight,
+                    exit: animation.slideOutRight
+                }}
+                to="/login"
+                label="Começar"
+                bg={colors.green}
+                color={"white"}
+            />
         </SplashScreenStyled>
     )
 }

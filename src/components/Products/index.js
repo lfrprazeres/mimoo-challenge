@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import { backgroundChooser } from './utils/backgroundChooser';
+import * as animation from '../../utils/animations/viewSlide';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const ProductsStyled = styled.div`
     margin-bottom: 20px;

@@ -3,11 +3,12 @@ name: SplashScreen
 route: /splash
 ---
 
+
 import { Playground, Props } from 'docz';
 import SplashScreen from './';
 import { Provider } from 'react-redux';
-import { store } from '../../store/createStore';
 import Routes from '../../routes';
+import { store } from '../../store/createStore';
 
 # SplashScreen
 
@@ -18,7 +19,7 @@ import Routes from '../../routes';
 <Playground>
   <Provider store={store}>
     <Routes>
-        <SplashScreen />
+      <SplashScreen />
     </Routes>
   </Provider>
 </Playground>

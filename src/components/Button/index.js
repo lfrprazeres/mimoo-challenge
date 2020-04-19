@@ -4,6 +4,7 @@ import { Button as MuiButton } from '@material-ui/core';
 import { device } from '../../utils/deviceSizes';
 import { connect  } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as animaton from '../../utils/animations/viewSlide';
 
 const ButtonStyled = styled.div`
     background-color: ${props => props.bg};
@@ -42,8 +43,9 @@ function Button(props) {
         color,
         style,
         to = "",
-        label
-    } = props
+        label,
+        animation
+    } = props;
 
     function handleClick() {
         if(onClick) {
@@ -53,8 +55,11 @@ function Button(props) {
 
     return (
         <ButtonStyled green={colors.green} bg={bg} color={color} style={style}>
-            <Link to={to}>
-                <MuiButton onClick={() => handleClick()}>
+            <Link to={{
+                pathname: to,
+                animation: animation
+            }} onClick={() => handleClick()}>
+                <MuiButton>
                     {label}
                 </MuiButton>
             </Link>
