@@ -8,21 +8,31 @@ const ProductsStyled = styled.div`
     margin-bottom: 20px;
     ul {
         display: flex;
-        margin-top: 10px;
+        margin: 10px 0 0 0;
+        padding: 0;
+        position: relative;
+        &:before {
+            background-color: ${props => props.green};
+            bottom: 0;
+            content: "";
+            height: 2px;
+            left: ${props => props.domSelected === undefined ? "0" : props.domSelected.offsetLeft + "px"};
+            position: absolute;
+            transition: .2s ease;
+            width: ${props => props.domSelected === undefined ? "100px" : (props.domSelected.offsetWidth + 5) + "px"};
+        }
         li {
+            box-sizing: border-box;
             color: ${props => props.gray};
             cursor: pointer;
             font-size: 18px;
             font-weight: 500;
             list-style-type: none;
             margin-right: 14px;
+            padding: 5px;
+            text-align: center;
         }
         .selected {
-            border-bottom: 2px solid ${props => props.green};
-            border-bottom-left-radius: 1px;
-            border-top-left-radius: 1px;
-            border-top-right-radius: 1px;
-            border-bottom-right-radius: 1px;
             color: ${props => props.green};
             font-weight: bold;
             padding-right: 2px;
@@ -72,16 +82,17 @@ const ProductsStyled = styled.div`
 
 function Products(props) {
     const [ selected, setSelected ] = useState(0);
+    const [ domSelected, setDomSelected ] = useState();
     const {
         products,
         colors
     } = props;
     return (
-        <ProductsStyled gray={colors.gray} green={colors.green}>
+        <ProductsStyled gray={colors.gray} green={colors.green} domSelected={domSelected}>
             <ul>
                 {products.map((item, index) => {
                     return (
-                        <li key={index} onClick={() => setSelected(index)} className={selected === index ? "selected" : ""}>
+                        <li key={index} onClick={(e) => {setSelected(index); setDomSelected(e.target)}} className={selected === index ? "selected" : ""}>
                             {item.category}
                         </li>
                     )

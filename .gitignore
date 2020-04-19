@@ -13,6 +13,7 @@
 
 # documentation
 /.docz
+.docz/.cache
 
 # misc
 .DS_Store
