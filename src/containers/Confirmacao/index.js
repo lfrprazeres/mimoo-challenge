@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { saveNewProduct } from '../../actions/user';
 import { device } from '../../utils/deviceSizes';
 import * as utilAnimation from '../../utils/animations/viewSlide';
-import useKeyPressEventListener from '../../utils/useKeyPressEventListener';
+import useEventListener from '../../utils/useEventListener';
 import { useHistory } from 'react-router-dom';
 
 const ConfirmacaoStyled = styled.main`
@@ -101,7 +101,7 @@ function Confirmacao(props) {
         }
     };
 
-    useKeyPressEventListener('keydown', handleKeyPress);
+    useEventListener('keydown', handleKeyPress);
 
     return (
         <ConfirmacaoStyled lightBrown={colors.lightBrown} black={colors.black} enter={animation.enter} exit={animation.exit}>

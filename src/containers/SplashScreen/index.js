@@ -7,7 +7,7 @@ import { device } from '../../utils/deviceSizes';
 import { Button } from "../../components";
 import * as animation from '../../utils/animations/viewSlide';
 import { useHistory } from 'react-router-dom';
-import useKeyPressEventListener from '../../utils/useKeyPressEventListener';
+import useEventListener from '../../ut../../utils/useEventListener'
 
 const SplashScreenStyled = styled.main`
     &.page-enter {
@@ -80,7 +80,7 @@ function SplashScreen(props) {
         }
     };
 
-    useKeyPressEventListener('keydown', handleKeyPress);
+    useEventListener('keydown', handleKeyPress);
 
     return (
         <SplashScreenStyled green={colors.green} black={colors.black} bg={background}>

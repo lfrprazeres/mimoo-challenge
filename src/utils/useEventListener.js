@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function useKeyPressEventListener(eventName, handler, element = window) {
+export default function useEventListener(eventName, handler, element = window) {
   const savedHandler = useRef();
 
   useEffect(() => {

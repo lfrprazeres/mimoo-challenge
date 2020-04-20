@@ -22,19 +22,29 @@ const ProductsStyled = styled.div`
             left: ${props => props.domSelected === undefined ? "0" : props.domSelected.offsetLeft + "px"};
             position: absolute;
             transition: .2s ease;
-            width: ${props => props.domSelected === undefined ? "100px" : (props.domSelected.offsetWidth + 5) + "px"};
+            width: ${props => props.domSelected === undefined ? "100px" : props.domSelected.offsetWidth + "px"};
         }
         li {
             box-sizing: border-box;
             color: ${props => props.gray};
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 500;
+            display: flex;
+            justify-content: center;
             list-style-type: none;
-            margin-right: 14px;
-            padding: 5px;
             text-align: center;
             min-width: 100px;
+            button {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: 500;
+                outline: none;
+                padding: 5px;
+                width: 100%;
+                &:focus {
+                    outline: 1px solid ${props => props.green}
+                }
+            }
         }
         .selected {
             color: ${props => props.green};
@@ -105,8 +115,10 @@ function Products(props) {
             <ul>
                 {products.map((item, index) => {
                     return (
-                        <li key={index} onClick={(e) => {setSelected({elementIndex: index, slideTo: selected.elementIndex < index ? "next" : "previous"}); setDomSelected(e.target)}} className={selected.elementIndex === index ? "selected" : ""}>
+                        <li key={index}>
+                           <button tabIndex={index + 1} onClick={(e) => {setSelected({elementIndex: index, slideTo: selected.elementIndex < index ? "next" : "previous"}); setDomSelected(e.target)}} className={selected.elementIndex === index ? "selected" : ""}>
                             {item.category}
+                           </button>
                         </li>
                     )
                 })}
