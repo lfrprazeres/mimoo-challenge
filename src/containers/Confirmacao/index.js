@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../components';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { saveNewProduct } from '../../actions/user';
 import { device } from '../../utils/deviceSizes';
 import * as utilAnimation from '../../utils/animations/viewSlide';
+import useKeyPressEventListener from '../../utils/useKeyPressEventListener';
 import { useHistory } from 'react-router-dom';
 
 const ConfirmacaoStyled = styled.main`
@@ -77,8 +78,8 @@ const ConfirmacaoStyled = styled.main`
 `;
 
 function Confirmacao(props) {
-    const history = useHistory();
     const [ pointsEarned ] = useState(100);
+    const history = useHistory();
     const {
         colors,
         product = {},
@@ -88,12 +89,19 @@ function Confirmacao(props) {
         animation = {}
     } = props.location;
 
-    useEffect(() => {
-        if(product.name === undefined) {
-            history.push("/scan")
+    function handleKeyPress(key) {
+        if(key.keyCode === 13){
+            history.push({
+                pathname: "/home",
+                animation:{
+                    enter: utilAnimation.slideInLeft,
+                    exit: utilAnimation.slideOutLeft
+                }
+            })
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    };
+
+    useKeyPressEventListener('keydown', handleKeyPress);
 
     return (
         <ConfirmacaoStyled lightBrown={colors.lightBrown} black={colors.black} enter={animation.enter} exit={animation.exit}>

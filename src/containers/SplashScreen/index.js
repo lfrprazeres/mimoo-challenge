@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { device } from '../../utils/deviceSizes';
 import { Button } from "../../components";
 import * as animation from '../../utils/animations/viewSlide';
+import { useHistory } from 'react-router-dom';
+import useKeyPressEventListener from '../../utils/useKeyPressEventListener';
 
 const SplashScreenStyled = styled.main`
     &.page-enter {
@@ -58,12 +60,28 @@ const SplashScreenStyled = styled.main`
         }
     }
     
-`
+`;
 
 function SplashScreen(props) {
+    const history = useHistory();
     const {
         colors
     } = props;
+
+    function handleKeyPress(key) {
+        if(key.keyCode === 13){
+            history.push({
+                pathname: '/login',
+                animation:{
+                    enter: animation.slideInRight,
+                    exit: animation.slideOutRight
+                }
+            })
+        }
+    };
+
+    useKeyPressEventListener('keydown', handleKeyPress);
+
     return (
         <SplashScreenStyled green={colors.green} black={colors.black} bg={background}>
             <div className="content">

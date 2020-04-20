@@ -10,6 +10,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { login } from '../../actions/user';
 import * as utilAnimation from '../../utils/animations/viewSlide';
+import useKeyPressEventListener from '../../utils/useKeyPressEventListener';
 
 const theme = createMuiTheme({
     overrides: {
@@ -97,7 +98,7 @@ function Nome(props) {
                     enter: utilAnimation.slideInRight,
                     exit: utilAnimation.slideOutRight
                 }
-            })
+            });
             addName(name)
         } else {
             setError({
@@ -106,6 +107,14 @@ function Nome(props) {
             })
         }
     }
+
+    function handleKeyPress(key) {
+        if(key.keyCode === 13){
+            handleCheckName();
+        }
+    };
+
+    useKeyPressEventListener('keydown', handleKeyPress);
     return (
         <NomeStyled green={colors.green} black={colors.black} enter={animation.enter} exit={animation.exit}>
             <div className="content">

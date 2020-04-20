@@ -12,8 +12,7 @@
 /build
 
 # documentation
-/.docz
-.docz/.cache
+/.docz/
 
 # misc
 .DS_Store

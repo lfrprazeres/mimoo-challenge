@@ -9,6 +9,7 @@ import { Button } from '../../components';
 import { searchNewProduct } from '../../actions/user';
 import { device } from '../../utils/deviceSizes';
 import * as utilAnimation from '../../utils/animations/viewSlide';
+import useKeyPressEventListener from '../../utils/useKeyPressEventListener';
 
 const ScanStyled = styled.main`
     &.page-enter {
@@ -146,7 +147,14 @@ function Scan(props) {
                 exit: utilAnimation.slideOutLeft
             }
         });
-    }
+    };
+    function handleKeyPress(key) {
+        if(key.keyCode === 13){
+            handleSearch();
+        }
+    };
+
+    useKeyPressEventListener('keydown', handleKeyPress);
 
     return(
         <ScanStyled green={colors.green} black={colors.black} enter={animation.enter} exit={animation.exit}>
