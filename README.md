@@ -100,6 +100,7 @@ You can see this properties accessing ./src/utils/deviceSizes.js.
 ### Styling
     - Material-ui (core/icons);
     - Styled Components.
+    - React Transition Group
 
 ### Test
     - Jest;

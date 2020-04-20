@@ -84,9 +84,8 @@ const ProductsStyled = styled.div`
                         width: 7em;
                     }
                 }
+            }
         }
-        }
-        
     }
 `;
 
@@ -106,7 +105,7 @@ function Products(props) {
             <ul>
                 {products.map((item, index) => {
                     return (
-                        <li key={index} onClick={(e) => {setSelected({elementIndex: index, slideTo: selected.elementIndex < index ? "next" : "previous"}); setDomSelected(e.target)}} className={selected === index ? "selected" : ""}>
+                        <li key={index} onClick={(e) => {setSelected({elementIndex: index, slideTo: selected.elementIndex < index ? "next" : "previous"}); setDomSelected(e.target)}} className={selected.elementIndex === index ? "selected" : ""}>
                             {item.category}
                         </li>
                     )

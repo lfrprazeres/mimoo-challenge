@@ -137,9 +137,15 @@ function Scan(props) {
         animation = {}
     } = props.location;
 
-    function handleSearch() {
-        onSearch(barCode, history);
-        history.push({ pathname: "/confirmacao", animation: { enter: utilAnimation.slideOutLeft, exit: utilAnimation.slideOutLeft }});
+    async function handleSearch() {
+        await onSearch(barCode, history);
+        history.push({
+            pathname: "/confirmacao",
+            animation: {
+                enter: utilAnimation.slideOutLeft,
+                exit: utilAnimation.slideOutLeft
+            }
+        });
     }
 
     return(
@@ -171,7 +177,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSearch: async (barCode, history) => {
+        onSearch: async (barCode) => {
             await dispatch(searchNewProduct(barCode))
         }
     }

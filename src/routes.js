@@ -22,10 +22,12 @@ const RoutesStyled = styled.div`
 
 function Routes(props) {
     const {
-        user
+        user,
+        children
     } = props;
     return (
         <Router>
+            <Switch>
                 <Route render={(props) => {
                     return (
                         <RoutesStyled>
@@ -43,7 +45,6 @@ function Routes(props) {
                                                 <Route path="/home" component={Home} />
                                                 <Route path="/scan" component={Scan} />
                                                 <Route path="/confirmacao" component={Confirmacao} />
-                                                {props.children}
                                             </>
                                         }
                                     </Switch>
@@ -52,6 +53,8 @@ function Routes(props) {
                         </RoutesStyled>
                     )
                 }} />
+            </Switch>
+            {children}
         </Router>
     )
 };
