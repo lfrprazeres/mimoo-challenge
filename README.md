@@ -4,7 +4,7 @@ This repository is about [Mimoo Challenge](https://github.com/mimoo-tech/jobs/bl
 ## To execute the dev environment properly you need to: 
 ```
 1. clone this repository
-2. enter in the mimoo directory
+2. enter in the mimoo-challenge directory
 3. run yarn or npm install
 4. run yarn start or npm start
 5. use one browser which has localStorage (not work on IE and EDGE without build)
@@ -12,7 +12,7 @@ This repository is about [Mimoo Challenge](https://github.com/mimoo-tech/jobs/bl
 ```
 > FYI I used Redux Devtools in the project, so if you want to see the redux store/redux actions more easily you can install [Redux Devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=pt-BR) extension on Chrome, and see accessing F12 > Redux, see how it works in the [github documentation](https://github.com/zalmoxisus/redux-devtools-extension)
 
-to run the test, just type `yarn test` or `npm run test` inside the mimoo directory to run JEST.
+to run the test, just type `yarn test` or `npm run test` inside the mimoo-challenge directory to run JEST.
 
 ## You can access this documentation and some more informations using docz:
 to use docz, type `yarn docz:dev` and access http://localhost:7000 to see the documentation!
