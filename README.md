@@ -30,8 +30,16 @@ to use docz, type `yarn docz:dev` and access http://localhost:7000 to see the do
     * ./src/store
         - the file createStore.js has all the configuration about saga, redux-persist, redux-api-middleware and redux-devtools-extension.
 
-### assets (static images)
-    * ./src/assets
+### routes
+    *./src/routes.js
+        - Here has all the routes of the application;
+        - I used CSSTransition here to apply for all the Routes animation to enter and to exit the page, you can see more about these animations in the utils part.
+        - The code has login validation inside, so when you try to access it without login, you are automatically redirected to the Nome page. 
+        - to see this validation working (if you already typed a name in the Nome page), please go to F12 > Application > Clear storage and click on "Clear site data" button, so then refresh the page.
+
+
+### assets (static files)
+    * ./src/assets/*
 
 ### the app core itself
     * ./src/containers
@@ -94,6 +102,7 @@ You can see this properties accessing ./src/utils/deviceSizes.js.
     - Nome
         - have tabIndex to the back button, to the input field and to the next button.
         - have validation when trigger the continue button (you can trigger with tabIndex + enter button or just enter button) to see if the input field have a valid value.
+        - to see this validation working (if you already typed a name in the Nome page), please go to F12 > Application > Clear storage and click on "Clear site data" button, so then refresh the page.
         - when it's not valid, the input turns red and show the error, when it's valid, goes to the Home page
     - Home
         - have tabIndex to the brand items and to the plus button (in the bottom right of the screen).
