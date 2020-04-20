@@ -123,7 +123,7 @@ function Nome(props) {
                 </IconButton>
                 <h1> Informe seu nome </h1>
                 <ThemeProvider theme={theme}>
-                    <TextField label={error.showError ? error.message: "Nome"} value={name} onChange={(e) => setName(e.target.value)} onClick={() => setError({})} error={error.showError}/>
+                    <TextField name="nome" label={error.showError ? error.message: "Nome"} value={name} onChange={(e) => setName(e.target.value)} onClick={() => setError({})} error={error.showError}/>
                 </ThemeProvider>
             </div>
             <Button

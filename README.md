@@ -42,13 +42,16 @@ to use docz, type `yarn docz:dev` and access http://localhost:7000 to see the do
 
 ### util functions
     * ./src/utils
-        - It has util functions used in the whole application.
+        - ./deviceSizes.js
+            - have all the sizes changes with media queries in the application.
+        - ./useEventListener.js
+            - Have an util function to add addEventListener and removeEventListener without write it from the scrath in the component.
+        - ./animations/viewSlide.js
+            - Have keyframes to create slide animations to transition between pages and between brands (Home page case).
 
 ### about all these files, you can import default exports accessing the right folder, or import it just accessing the main folder, for example:
     - import Home from './src/containers/Home';
     - import { Home } from './src/containers';
-
-
 
 ## I organized the tests like:
     * ./tests/function-tests
@@ -69,6 +72,8 @@ to use docz, type `yarn docz:dev` and access http://localhost:7000 to see the do
         - have one configuration about static image files, to make it keep working with jest tests.
 
 
+## About Accessibility
+
 ### The App was built to support different sizes, which can be:
     - > 200px
     - 200px > 360px
@@ -81,6 +86,22 @@ to use docz, type `yarn docz:dev` and access http://localhost:7000 to see the do
     - 1920px > 2560px
     - < 2560px
 You can see this properties accessing ./src/utils/deviceSizes.js.
+
+### The App was built to support tabIndex and some button events, like:
+    - Splash Screen
+        - have tabIndex to the continue button and, when trigger enter button, it goes to the Nome page
+    - Nome
+        - have tabIndex to the back button, to the input field and to the next button.
+        - have validation when trigger the continue button (you can trigger with tabIndex + enter button or just enter button) to see if the input field have a valid value.
+        - when it's not valid, the input turns red and show the error, when it's valid, goes to the Home page
+    - Home
+        - have tabIndex to the brand items and to the plus button (in the bottom right of the screen).
+        - when trigger the enter button or tabIndex to the plus button and trigger enter, goes to Scan page.
+    - Scan
+        - have tabIndex to the continue button and, when trigger enter button, it goes to the Continuacao page.
+    - Continuacao
+        - have tabIndex to the continue button and, when trigger enter button, goes back to Home page.
+> FYI tabIndex is when you can access the properties of the site with the tab key on your keyboard
 
 ## Techs used:
 
@@ -99,8 +120,8 @@ You can see this properties accessing ./src/utils/deviceSizes.js.
 
 ### Styling
     - Material-ui (core/icons);
-    - Styled Components.
-    - React Transition Group
+    - Styled Components;
+    - React Transition Group.
 
 ### Test
     - Jest;
